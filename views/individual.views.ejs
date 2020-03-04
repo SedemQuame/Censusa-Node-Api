@@ -1,0 +1,70 @@
+<%- include('partials/header.ejs'); %>
+
+    <body>
+        <%- include('partials/nav.ejs'); %>
+
+            <div class="container">
+                <h1>Data On Individuals</h1>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+                    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                <hr>
+                <!-- <%= results %> -->
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Date Of Birth</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Nationality</th>
+                            <th scope="col">Occupation</th>
+                            <th scope="col">Marital Status</th>
+                            <th scope="col">Residency</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%for(let i = 0; i < results.length; i++){%>
+                            <tr>
+                                <th scope="row">
+                                    <!-- <%= (i+1) %> -->
+                                    <!-- <img class="homeElectionImgs" src="<%= results[i].image_url %>" alt="electionPoster"> -->
+                                </th>
+                                <td>
+                                    <%= results[i].name %>
+                                </td>
+                                <td>
+                                    <%=  results[i].dateOfBirth %>
+                                </td>
+                                <td>
+                                    <%=  results[i].age %>
+                                </td>
+                                <td>
+                                    <%=  results[i].nationality %>
+                                </td>
+                                <td>
+                                    <%=  results[i].occupation %>
+                                </td>
+                                <td>
+                                    <%=  results[i].maritalStatus %>
+                                </td>
+                                <td>
+                                    <%=  results[i].residentialStatus %>
+                                </td>
+                                <td>
+
+                                    <form action="/removeIndividual" method="post">
+                                        <input type="hidden" name="electionId" value="<%=  results[i]._id %>">
+                                        <button type="submit" class="btn btn-outline-dark">
+                                            <img class="deleteBtn" src="./img/delete.svg" alt="Delete icon">
+                                        </button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                            <%}%>
+                    </tbody>
+                </table>
+            </div>
+
+            <%- include('partials/footer.ejs'); %>

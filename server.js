@@ -40,12 +40,14 @@ app.use(express.static(__dirname + '/public'));
 
 
 //====================================== requiring list routes ========================================//
+require('./routes/user.route')(app);
 require('./routes/company.route')(app);
 require('./routes/individual.route')(app);
 
 // define a simple route
 app.get('/', (req, res) => {
-    res.send({msg: `Welcome to the Censusa API Client`});
+    // res.send({msg: `Welcome to the Censusa API Client`});
+    res.redirect('/login');
 });
 
 // listening port

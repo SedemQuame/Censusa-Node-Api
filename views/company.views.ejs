@@ -4,7 +4,7 @@
         <%- include('partials/nav.ejs'); %>
 
             <div class="container">
-                <h1>Election List</h1>
+                <h1>Data On Companies</h1>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
                     aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                 <hr>
@@ -12,13 +12,16 @@
                 <table class="table table-striped">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Poster</th>
-                            <th scope="col">Election</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Start</th>
-                            <th scope="col">End</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Founder(s)</th>
+                            <th scope="col">Employees</th>
+                            <th scope="col">Min wage</th>
+                            <th scope="col">Max wage</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Postal</th>
+                            <th scope="col">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,29 +29,37 @@
                             <tr>
                                 <th scope="row">
                                     <!-- <%= (i+1) %> -->
-                                    <img class="homeElectionImgs" src="<%= results[i].image_url %>" alt="electionPoster">
+                                    <!-- <img class="homeElectionImgs" src="<%= results[i].image_url %>" alt="electionPoster"> -->
                                 </th>
                                 <td>
                                     <%= results[i].name %>
                                 </td>
                                 <td>
-                                    <%=  results[i].description %>
+                                    <%=  results[i].category%>
                                 </td>
                                 <td>
-                                    <%=  results[i].start_time %>
+                                    <%=  results[i].founders %>
                                 </td>
                                 <td>
-                                    <%=  results[i].end_time %>
+                                    <%=  results[i].numberOfEmployees %>
                                 </td>
                                 <td>
-                                    <%=  'active' %>
+                                    <%=  results[i].minWage %>
+                                </td>
+                                <td>
+                                    <%=  results[i].maxWage %>
+                                </td>
+                                <td>
+                                    <%=  results[i].email %>
+                                </td>
+                                <td>
+                                    <%=  results[i].postalAddress %>
                                 </td>
                                 <td>
 
-                                    <form action="/remove_election_by_id" method="post">
+                                    <form action="/removeCompany" method="post">
                                         <input type="hidden" name="electionId" value="<%=  results[i]._id %>">
-
-                                        <button type="submit">
+                                        <button type="submit" class="btn btn-outline-dark">
                                             <img class="deleteBtn" src="./img/delete.svg" alt="Delete icon">
                                         </button>
                                     </form>
